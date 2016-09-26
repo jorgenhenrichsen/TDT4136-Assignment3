@@ -21,17 +21,7 @@ class BoardScene: SKScene {
     }
 
     
-    func readMap(file: String) {
-        do {
-
-            let path = Bundle.main.path(forResource: file, ofType: "txt")
-            let text = try String(contentsOfFile: path!)
-
-            print(text)
-        } catch {
-            print("Could not read file \"\(file)\"")
-        }
-    }
+    
     
     
     

@@ -24,8 +24,7 @@ class ViewController: UIViewController {
         board = BoardScene(size: CGSize(width: view.bounds.width, height: view.bounds.height))
         viewSK.presentScene(board)
         
-        board.readMap(file: "board-1-1")
-        
+        print(FileReader.readMap(file: "board-1-1"))
         
         
     }
@@ -34,8 +33,12 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    
+    
 }
+
+
 
 
 

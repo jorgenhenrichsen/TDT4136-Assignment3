@@ -23,6 +23,7 @@
 		07057EA41D995D790028628D /* board-2-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 07057E9C1D995D790028628D /* board-2-3.txt */; };
 		07057EA51D995D790028628D /* board-2-4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 07057E9D1D995D790028628D /* board-2-4.txt */; };
 		42E6058B1D9960B5005CE0FB /* BoardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6058A1D9960B5005CE0FB /* BoardScene.swift */; };
+		42E6058D1D99795A005CE0FB /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6058C1D99795A005CE0FB /* FileReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		07057E9C1D995D790028628D /* board-2-3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "board-2-3.txt"; sourceTree = "<group>"; };
 		07057E9D1D995D790028628D /* board-2-4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "board-2-4.txt"; sourceTree = "<group>"; };
 		42E6058A1D9960B5005CE0FB /* BoardScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardScene.swift; sourceTree = "<group>"; };
+		42E6058C1D99795A005CE0FB /* FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				07057E651D994CE20028628D /* AppDelegate.swift */,
 				07057E671D994CE20028628D /* ViewController.swift */,
 				42E6058A1D9960B5005CE0FB /* BoardScene.swift */,
+				42E6058C1D99795A005CE0FB /* FileReader.swift */,
 				07057E691D994CE20028628D /* Main.storyboard */,
 				07057E6C1D994CE20028628D /* Assets.xcassets */,
 				07057E6E1D994CE20028628D /* LaunchScreen.storyboard */,
@@ -307,6 +310,7 @@
 			files = (
 				42E6058B1D9960B5005CE0FB /* BoardScene.swift in Sources */,
 				07057E681D994CE20028628D /* ViewController.swift in Sources */,
+				42E6058D1D99795A005CE0FB /* FileReader.swift in Sources */,
 				07057E661D994CE20028628D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,12 +7,27 @@
 //
 
 import UIKit
-
+import SpriteKit
 class ViewController: UIViewController {
 
+    
+    var board :BoardScene! = nil
+    var viewSK: SKView! = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        viewSK = SKView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
+        view.addSubview(viewSK)
+        board = BoardScene(size: CGSize(width: view.bounds.width, height: view.bounds.height))
+        viewSK.presentScene(board)
+        
+        board.readMap(file: "board-1-1")
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +35,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
 }
+
+
+
+
+
 

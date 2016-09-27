@@ -23,6 +23,7 @@
 		07057EA41D995D790028628D /* board-2-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 07057E9C1D995D790028628D /* board-2-3.txt */; };
 		07057EA51D995D790028628D /* board-2-4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 07057E9D1D995D790028628D /* board-2-4.txt */; };
 		07057EAB1D9992800028628D /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07057EAA1D9992800028628D /* Board.swift */; };
+		07057EAD1D99BCF60028628D /* PathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07057EAC1D99BCF60028628D /* PathFinder.swift */; };
 		42E6058B1D9960B5005CE0FB /* BoardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6058A1D9960B5005CE0FB /* BoardScene.swift */; };
 		42E6058D1D99795A005CE0FB /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6058C1D99795A005CE0FB /* FileReader.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		07057E9C1D995D790028628D /* board-2-3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "board-2-3.txt"; sourceTree = "<group>"; };
 		07057E9D1D995D790028628D /* board-2-4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "board-2-4.txt"; sourceTree = "<group>"; };
 		07057EAA1D9992800028628D /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		07057EAC1D99BCF60028628D /* PathFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathFinder.swift; sourceTree = "<group>"; };
 		42E6058A1D9960B5005CE0FB /* BoardScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardScene.swift; sourceTree = "<group>"; };
 		42E6058C1D99795A005CE0FB /* FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +131,7 @@
 				07057E711D994CE20028628D /* Info.plist */,
 				07057E951D995D790028628D /* Boards */,
 				07057EAA1D9992800028628D /* Board.swift */,
+				07057EAC1D99BCF60028628D /* PathFinder.swift */,
 			);
 			path = Assignment3;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 			files = (
 				42E6058B1D9960B5005CE0FB /* BoardScene.swift in Sources */,
 				07057E681D994CE20028628D /* ViewController.swift in Sources */,
+				07057EAD1D99BCF60028628D /* PathFinder.swift in Sources */,
 				07057EAB1D9992800028628D /* Board.swift in Sources */,
 				42E6058D1D99795A005CE0FB /* FileReader.swift in Sources */,
 				07057E661D994CE20028628D /* AppDelegate.swift in Sources */,

@@ -19,12 +19,20 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        viewSK = SKView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
-        view.addSubview(viewSK)
-        board = BoardScene(size: CGSize(width: view.bounds.width, height: view.bounds.height))
-        viewSK.presentScene(board)
         
-        print(FileReader.readMap(file: "board-1-1"))
+        
+        let map = FileReader.readMap(file: "board-1-2")
+        
+        let board = BoardFactory().createBoard(from: map)!
+        
+        let pathFinder = PathFinder()
+        
+        if let shortestPath = pathFinder.findShortestPathAStar(dataSource: board) {
+            print(shortestPath)
+        }
+        else {
+            print("Found no path")
+        }
         
         
     }

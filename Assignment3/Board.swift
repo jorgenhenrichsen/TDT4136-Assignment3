@@ -77,7 +77,25 @@ class Board: AStarDataSource {
     }
     
     func costToMove(from nodeA: Node, to nodeB: Node) -> Int {
-        return 1
+        switch nodeB.type {
+        case .empty:
+            return 1
+        case .forest:
+            return 10
+        case .grass:
+            return 5
+        case .road:
+            return 1
+        case .mountain:
+            return 50
+        case .water:
+            return 100
+        case .goal, .start:
+            return 1
+        default:
+            print("ERROR: Cost not availabel for node")
+            return 0
+        }
     }
 }
 

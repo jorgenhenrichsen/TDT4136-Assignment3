@@ -54,21 +54,58 @@ class PathFinder {
                 }
                 
                 // Compute the cost from the current step to that step
+                print(step.node)
                 let moveCost = dataSource.costToMove(from: currentStep.node, to: step.node)
                 
-                // Check if the step is already in the open list
+                if let index = openSteps.index(of: step) {
+                    let step = openSteps[index]
+                    
+                    
+                    if currentStep.gScore + moveCost < step.gScore {
+                        // replace the step's existing parent with the current step
+                        step.setParent(predecessor: currentStep, withMoveCost: moveCost)
+                        // Because the G score has changed, the F score may have changed too
+                        // So to keep the open list ordered we have to remove the step, and re-insert it with
+                        // the insert function which is preserving the list ordered by F score
+                        openSteps.remove(at: index)
+                        openSteps.append(step)
+                        openSteps.sort(by: { step1, step2 in
+                            step1.score <= step2.score
+                        })
+                        
+                    }
+                    
+                    
+                }
+                else {
+                    step.hScore = hScoreForNode(current: step.node, goal: dataSource.goalNode)
+                    step.setParent(predecessor: currentStep, withMoveCost: moveCost)
+                    
+                    openSteps.append(step)
+                    openSteps.sort(by: { step1, step2 in
+                        step1.score <= step2.score
+                    })
+                }
                 
+                
+                
+                
+                // Check if the step is already in the open list
+                /*
                 if let index = openSteps.index(of: step) {
                     // already in the open list
                     
                     // retrieve the old one (which has its scores already computed)
                     let step = openSteps[index]
                     
+                    print("Current step: \(currentStep.gScore)")
+                    print("Step: \(step.gScore)")
+                    print("MoveCost: \(moveCost)")
+                    
                     // check to see if the G score for that step is lower if we use the current step to get there
                     if currentStep.gScore + moveCost < step.gScore {
                         // replace the step's existing parent with the current step
                         step.setParent(predecessor: currentStep, withMoveCost: moveCost)
-                        
                         // Because the G score has changed, the F score may have changed too
                         // So to keep the open list ordered we have to remove the step, and re-insert it with
                         // the insert function which is preserving the list ordered by F score
@@ -91,36 +128,14 @@ class PathFinder {
                     openSteps.append(step)
                     openSteps.sort(by: {
                         $0.score <= $1.score
-                    })                }
+                    })
+                }*/
             }
             
         }
         
-        // no path found
         return nil
 
-        
-        /*let startStep = Step(node: board.startNode)
-        startStep.hScore = hScoreForNode(current: startStep.node, goal: board.goalNode)
-        
-        var closedList = [Step]()
-        var openList = [Step(node: board.startNode)]
-        
-        while !openList.isEmpty {
-            openList.sort() // Sorting by F score.
-            let currentStep = openList.remove(at: 0)
-            closedList.append(currentStep)
-            
-            if currentStep.node == board.goalNode {
-                // Found sol
-            }
-            
-            let adjacentNodes = board.adjacentNodes(of: currentStep.node)
- 
-        }
-        
- 
-        return nil*/
     }
     
     

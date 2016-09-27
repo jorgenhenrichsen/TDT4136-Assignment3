@@ -77,12 +77,26 @@ class BoardScene: SKScene {
     
     
     func drawPath(path: [Node]) {
+        drawNodes(nodes: path, image: "path")
+    }
+    
+    func drawOpenNodes(nodes: [Node]) {
+        drawNodes(nodes: nodes, image: "openNode")
+    }
+
+    func drawClosedNodes(nodes: [Node]) {
+        drawNodes(nodes: nodes, image: "closedNode")
+    }
+    
+    
+    func drawNodes(nodes: [Node], image: String) {
         if let board = board {
-            var mutablePath = path
-            mutablePath.removeLast()
+            var mutableNodes = nodes
+            mutableNodes.removeLast()
             let nodeSize = Int(size.width) / board.width // How wide can we draw each node
-            for node in mutablePath {
-                let tile = SKSpriteNode(color: .yellow, size: CGSize(width: nodeSize, height: nodeSize))
+            for node in mutableNodes {
+                let tile = SKSpriteNode(name: "path")
+                tile.size = CGSize(width: nodeSize, height: nodeSize)
                 let xPos = node.col * nodeSize + nodeSize/2
                 let yPos = ((board.height - 1) - node.row) * nodeSize + nodeSize/2 // Flip rows, scene drawn from bottom left
                 
@@ -90,8 +104,9 @@ class BoardScene: SKScene {
                 addChild(tile)
             }
         }
-        
     }
+    
+    
     
     
     required init?(coder aDecoder: NSCoder) {

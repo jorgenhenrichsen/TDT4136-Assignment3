@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         
         let pathFinder = PathFinder()
         
-        if let shortestPath = pathFinder.findShortestPathAStar(dataSource: board!) {
+        if let shortestPath = pathFinder.findShortestPath(dataSource: board!, mode: .bfs) {
             
             print(shortestPath)
             scene.drawPath(path: shortestPath)

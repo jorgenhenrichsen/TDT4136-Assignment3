@@ -109,7 +109,7 @@ enum NodeType: Character {
 
 class BoardFactory {
     
-    class func createBoard(from textMap: [[Character]]) -> Board {
+    class func createBoard(from textMap: [[Character]]) -> Board? {
         var nodes = [Node]()
         var startNode: Node?
         var goalNode: Node?

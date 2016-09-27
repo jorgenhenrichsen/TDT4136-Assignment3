@@ -146,6 +146,8 @@
 				07057E6E1D994CE20028628D /* LaunchScreen.storyboard */,
 				07057E711D994CE20028628D /* Info.plist */,
 				07057E951D995D790028628D /* Boards */,
+				07057EAA1D9992800028628D /* Board.swift */,
+				07057EAC1D99BCF60028628D /* PathFinder.swift */,
 			);
 			path = Assignment3;
 			sourceTree = "<group>";

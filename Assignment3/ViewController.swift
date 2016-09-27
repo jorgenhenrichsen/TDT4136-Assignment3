@@ -26,7 +26,19 @@ class ViewController: UIViewController {
         
         let map = FileReader.readMap(file: "board-2-1")
         let board = BoardFactory.createBoard(from: map)
-        scene.drawBoard(board: board)
+        scene.drawBoard(board: board!)
+        
+        let pathFinder = PathFinder()
+        
+        if let shortestPath = pathFinder.findShortestPathAStar(dataSource: board!) {
+            
+            print(shortestPath)
+            scene.drawPath(path: shortestPath)
+        }
+        else {
+            print("Found no path")
+        }
+        
         
     }
 

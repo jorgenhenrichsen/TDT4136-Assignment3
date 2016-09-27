@@ -18,17 +18,24 @@ extension SKSpriteNode {
 }
 
 class BoardScene: SKScene {
+    
+    var board: Board?
+    
     override init(size: CGSize) {
         super.init(size: size)
 
+        
+        
         backgroundColor = .white
     }
     
     func drawBoard(board: Board) {
         
+        self.board = board
+        
         let nodes = board.nodes
-        let boardWidth = nodes.last!.col + 1
-        let boardHeight = nodes.last!.row + 1
+        let boardWidth = board.width
+        let boardHeight = board.height
         
         print("Width: \(boardWidth) Height: \(boardHeight)")
         
@@ -70,6 +77,19 @@ class BoardScene: SKScene {
     
     
     func drawPath(path: [Node]) {
+        if let board = board {
+            var mutablePath = path
+            mutablePath.removeLast()
+            let nodeSize = Int(size.width) / board.width // How wide can we draw each node
+            for node in mutablePath {
+                let tile = SKSpriteNode(color: .yellow, size: CGSize(width: nodeSize, height: nodeSize))
+                let xPos = node.col * nodeSize + nodeSize/2
+                let yPos = ((board.height - 1) - node.row) * nodeSize + nodeSize/2 // Flip rows, scene drawn from bottom left
+                
+                tile.position = CGPoint(x: xPos, y: yPos)
+                addChild(tile)
+            }
+        }
         
     }
     

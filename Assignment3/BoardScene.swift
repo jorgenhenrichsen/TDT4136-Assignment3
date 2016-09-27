@@ -95,7 +95,7 @@ class BoardScene: SKScene {
             mutableNodes.removeLast()
             let nodeSize = Int(size.width) / board.width // How wide can we draw each node
             for node in mutableNodes {
-                let tile = SKSpriteNode(name: "path")
+                let tile = SKSpriteNode(name: image)
                 tile.size = CGSize(width: nodeSize, height: nodeSize)
                 let xPos = node.col * nodeSize + nodeSize/2
                 let yPos = ((board.height - 1) - node.row) * nodeSize + nodeSize/2 // Flip rows, scene drawn from bottom left

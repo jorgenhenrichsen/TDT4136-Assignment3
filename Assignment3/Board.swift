@@ -100,7 +100,7 @@ class Board: AStarDataSource {
 }
 
 // A node in the board
-struct Node: Equatable {
+struct Node: Equatable, Hashable {
     
     let col: Int
     let row: Int
@@ -108,6 +108,10 @@ struct Node: Equatable {
     
     static func ==(lhs: Node, rhs: Node) -> Bool {
         return lhs.col == rhs.col && lhs.row == rhs.row
+    }
+    
+    var hashValue: Int {
+        return col.hashValue + row.hashValue
     }
 
 }

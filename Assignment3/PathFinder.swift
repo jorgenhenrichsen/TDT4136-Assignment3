@@ -27,7 +27,7 @@ class PathFinder {
     
     
     // Find the shortest path in a board.
-    func findShortestPath(dataSource: AStarDataSource, mode: SearchMode) -> (path: [Node]?, closed: [Node]?, open: [Node]) {
+    func findShortestPath(dataSource: AStarDataSource, mode: SearchMode) -> (path: [Node]?, closed: [Node], open: [Node]) {
         var closedSteps = Set<Step>()
         var openSteps = [Step(node: dataSource.startNode)]
         

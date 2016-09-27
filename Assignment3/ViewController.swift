@@ -24,20 +24,24 @@ class ViewController: UIViewController {
         scene = BoardScene(size: CGSize(width: view.bounds.width, height: view.bounds.height))
         viewSK.presentScene(scene)
         
-        let map = FileReader.readMap(file: "board-1-4")
+        let map = FileReader.readMap(file: "board-2-4")
         let board = BoardFactory.createBoard(from: map)
         scene.drawBoard(board: board!)
         
         let pathFinder = PathFinder()
         
-        if let shortestPath = pathFinder.findShortestPath(dataSource: board!, mode: .bfs) {
-            
-            print(shortestPath)
-            scene.drawPath(path: shortestPath)
+        let paths = pathFinder.findShortestPath(dataSource: board!, mode: .aStar)
+        
+        if let shortesPath = paths.path {
+            scene.drawPath(path: shortesPath)
+
+            let shortestPathSet = Set<Node>(shortesPath)
+            let closedSet = Set<Node>(paths.closed)
+            scene.drawClosedNodes(nodes: Array(closedSet.subtracting(shortestPathSet)))
+
         }
-        else {
-            print("Found no path")
-        }
+        
+        scene.drawOpenNodes(nodes: paths.open)
         
         
     }

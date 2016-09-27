@@ -22,6 +22,17 @@
 		07057EA31D995D790028628D /* board-2-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 07057E9B1D995D790028628D /* board-2-2.txt */; };
 		07057EA41D995D790028628D /* board-2-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 07057E9C1D995D790028628D /* board-2-3.txt */; };
 		07057EA51D995D790028628D /* board-2-4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 07057E9D1D995D790028628D /* board-2-4.txt */; };
+		07057EAB1D9992800028628D /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07057EAA1D9992800028628D /* Board.swift */; };
+		07057EAD1D99BCF60028628D /* PathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07057EAC1D99BCF60028628D /* PathFinder.swift */; };
+		42E6058B1D9960B5005CE0FB /* BoardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6058A1D9960B5005CE0FB /* BoardScene.swift */; };
+		42E6058D1D99795A005CE0FB /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6058C1D99795A005CE0FB /* FileReader.swift */; };
+		42E605931D9A8770005CE0FB /* forest.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E6058F1D9A8770005CE0FB /* forest.png */; };
+		42E605941D9A8770005CE0FB /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E605901D9A8770005CE0FB /* grass.png */; };
+		42E605951D9A8770005CE0FB /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E605911D9A8770005CE0FB /* road.png */; };
+		42E605961D9A8770005CE0FB /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E605921D9A8770005CE0FB /* water.png */; };
+		42E6059A1D9A8AFD005CE0FB /* mountain.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E605991D9A8AFD005CE0FB /* mountain.png */; };
+		42E605A41D9A8F16005CE0FB /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E605A31D9A8F16005CE0FB /* start.png */; };
+		42E605A81D9A9141005CE0FB /* goal.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E605A71D9A9141005CE0FB /* goal.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +74,17 @@
 		07057E9B1D995D790028628D /* board-2-2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "board-2-2.txt"; sourceTree = "<group>"; };
 		07057E9C1D995D790028628D /* board-2-3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "board-2-3.txt"; sourceTree = "<group>"; };
 		07057E9D1D995D790028628D /* board-2-4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "board-2-4.txt"; sourceTree = "<group>"; };
+		07057EAA1D9992800028628D /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		07057EAC1D99BCF60028628D /* PathFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathFinder.swift; sourceTree = "<group>"; };
+		42E6058A1D9960B5005CE0FB /* BoardScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardScene.swift; sourceTree = "<group>"; };
+		42E6058C1D99795A005CE0FB /* FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
+		42E6058F1D9A8770005CE0FB /* forest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forest.png; sourceTree = "<group>"; };
+		42E605901D9A8770005CE0FB /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
+		42E605911D9A8770005CE0FB /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road.png; sourceTree = "<group>"; };
+		42E605921D9A8770005CE0FB /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
+		42E605991D9A8AFD005CE0FB /* mountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mountain.png; sourceTree = "<group>"; };
+		42E605A31D9A8F16005CE0FB /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
+		42E605A71D9A9141005CE0FB /* goal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goal.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,13 +135,19 @@
 		07057E641D994CE20028628D /* Assignment3 */ = {
 			isa = PBXGroup;
 			children = (
+				42E6058E1D9A8726005CE0FB /* TileImages */,
 				07057E651D994CE20028628D /* AppDelegate.swift */,
 				07057E671D994CE20028628D /* ViewController.swift */,
+				42E6058A1D9960B5005CE0FB /* BoardScene.swift */,
+				42E6058C1D99795A005CE0FB /* FileReader.swift */,
+				07057EAA1D9992800028628D /* Board.swift */,
 				07057E691D994CE20028628D /* Main.storyboard */,
 				07057E6C1D994CE20028628D /* Assets.xcassets */,
 				07057E6E1D994CE20028628D /* LaunchScreen.storyboard */,
 				07057E711D994CE20028628D /* Info.plist */,
 				07057E951D995D790028628D /* Boards */,
+				07057EAA1D9992800028628D /* Board.swift */,
+				07057EAC1D99BCF60028628D /* PathFinder.swift */,
 			);
 			path = Assignment3;
 			sourceTree = "<group>";
@@ -155,6 +183,20 @@
 				07057E9D1D995D790028628D /* board-2-4.txt */,
 			);
 			path = Boards;
+			sourceTree = "<group>";
+		};
+		42E6058E1D9A8726005CE0FB /* TileImages */ = {
+			isa = PBXGroup;
+			children = (
+				42E605A71D9A9141005CE0FB /* goal.png */,
+				42E605A31D9A8F16005CE0FB /* start.png */,
+				42E605991D9A8AFD005CE0FB /* mountain.png */,
+				42E6058F1D9A8770005CE0FB /* forest.png */,
+				42E605901D9A8770005CE0FB /* grass.png */,
+				42E605911D9A8770005CE0FB /* road.png */,
+				42E605921D9A8770005CE0FB /* water.png */,
+			);
+			name = TileImages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,15 +311,22 @@
 			files = (
 				07057EA41D995D790028628D /* board-2-3.txt in Resources */,
 				07057EA21D995D790028628D /* board-2-1.txt in Resources */,
+				42E605A81D9A9141005CE0FB /* goal.png in Resources */,
 				07057E701D994CE20028628D /* LaunchScreen.storyboard in Resources */,
 				07057EA31D995D790028628D /* board-2-2.txt in Resources */,
+				42E605931D9A8770005CE0FB /* forest.png in Resources */,
+				42E605951D9A8770005CE0FB /* road.png in Resources */,
 				07057E6D1D994CE20028628D /* Assets.xcassets in Resources */,
 				07057E9F1D995D790028628D /* board-1-2.txt in Resources */,
 				07057E6B1D994CE20028628D /* Main.storyboard in Resources */,
+				42E605A41D9A8F16005CE0FB /* start.png in Resources */,
+				42E605941D9A8770005CE0FB /* grass.png in Resources */,
+				42E6059A1D9A8AFD005CE0FB /* mountain.png in Resources */,
 				07057EA51D995D790028628D /* board-2-4.txt in Resources */,
 				07057E9E1D995D790028628D /* board-1-1.txt in Resources */,
 				07057EA01D995D790028628D /* board-1-3.txt in Resources */,
 				07057EA11D995D790028628D /* board-1-4.txt in Resources */,
+				42E605961D9A8770005CE0FB /* water.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,7 +351,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42E6058B1D9960B5005CE0FB /* BoardScene.swift in Sources */,
 				07057E681D994CE20028628D /* ViewController.swift in Sources */,
+				07057EAD1D99BCF60028628D /* PathFinder.swift in Sources */,
+				07057EAB1D9992800028628D /* Board.swift in Sources */,
+				42E6058D1D99795A005CE0FB /* FileReader.swift in Sources */,
 				07057E661D994CE20028628D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -552,6 +605,7 @@
 				07057E8C1D994CE20028628D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		07057E8D1D994CE20028628D /* Build configuration list for PBXNativeTarget "Assignment3Tests" */ = {
 			isa = XCConfigurationList;
@@ -560,6 +614,7 @@
 				07057E8F1D994CE20028628D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		07057E901D994CE20028628D /* Build configuration list for PBXNativeTarget "Assignment3UITests" */ = {
 			isa = XCConfigurationList;
@@ -568,6 +623,7 @@
 				07057E921D994CE20028628D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

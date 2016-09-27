@@ -44,10 +44,12 @@ class PathFinder {
             // Get the adjacent tiles coords of the current step
             let adjacentNodes = dataSource.walkableAdjacentNodes(of: currentStep.node)
             for node in adjacentNodes {
+                print("Walking through adjacent nodes")
                 let step = Step(node: node)
                 
                 // check if the step isn't already in the closed list
                 if closedSteps.contains(step) {
+                    print("Ignoring adjacent node")
                     continue // ignore it
                 }
                 
@@ -72,7 +74,10 @@ class PathFinder {
                         // the insert function which is preserving the list ordered by F score
                         openSteps.remove(at: index)
                         openSteps.append(step)
-                        openSteps.sort()
+                        openSteps.sort(by: {
+                            $0.score <= $1.score
+                        })
+                        
                     }
                     
                 } else { // not in the open list, so add it
@@ -84,8 +89,9 @@ class PathFinder {
                     
                     // Add it with the function which preserves the list ordered by F score
                     openSteps.append(step)
-                    openSteps.sort()
-                }
+                    openSteps.sort(by: {
+                        $0.score <= $1.score
+                    })                }
             }
             
         }
@@ -172,7 +178,7 @@ class Step: Hashable, Comparable {
     }
     
     static func ==(lhs: Step, rhs: Step) -> Bool {
-        return lhs.score == rhs.score
+        return lhs.node == rhs.node
     }
     
     func setParent(predecessor: Step, withMoveCost moveCost: Int) {

@@ -21,11 +21,15 @@ class ViewController: UIViewController {
         
         
         
-        let map = FileReader.readMap(file: "board-1-2")
+        let map = FileReader.readMap(file: "board-1-1")
         
         let board = BoardFactory().createBoard(from: map)!
         
         let pathFinder = PathFinder()
+        
+        print(board.startNode)
+        
+        print(board.walkableAdjacentNodes(of: board.startNode))
         
         if let shortestPath = pathFinder.findShortestPathAStar(dataSource: board) {
             print(shortestPath)

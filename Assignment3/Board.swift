@@ -47,7 +47,7 @@ enum NodeType: Character {
 
 class BoardFactory {
     
-    func createBoard(from textMap: [[Character]]) -> Board {
+    class func createBoard(from textMap: [[Character]]) -> Board {
         var nodes = [Node]()
         for r in 0..<textMap.count {
             let row = textMap[r]

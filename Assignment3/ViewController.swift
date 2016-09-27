@@ -11,7 +11,7 @@ import SpriteKit
 class ViewController: UIViewController {
 
     
-    var board :BoardScene! = nil
+    var scene :BoardScene! = nil
     var viewSK: SKView! = nil
     
     override func viewDidLoad() {
@@ -21,11 +21,12 @@ class ViewController: UIViewController {
         
         viewSK = SKView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
         view.addSubview(viewSK)
-        board = BoardScene(size: CGSize(width: view.bounds.width, height: view.bounds.height))
-        viewSK.presentScene(board)
+        scene = BoardScene(size: CGSize(width: view.bounds.width, height: view.bounds.height))
+        viewSK.presentScene(scene)
         
-        print(FileReader.readMap(file: "board-1-1"))
-        
+        let map = FileReader.readMap(file: "board-2-1")
+        let board = BoardFactory.createBoard(from: map)
+        scene.drawBoard(board: board)
         
     }
 

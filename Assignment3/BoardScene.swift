@@ -25,23 +25,12 @@ class BoardScene: SKScene {
     
     override init(size: CGSize) {
         super.init(size: size)
-
-        backgroundColor = .white
     }
     
     func drawBoard(board: Board) {
         
         self.board = board
-        
         let nodes = board.nodes
-        
-        
-        
-        //print("Width: \(boardWidth) Height: \(boardHeight)")
-        
-        //let nodeSize = size.width / CGFloat(board.width) // How wide can we draw each node
-        
-       
         for node in nodes {
             
             var tile :SKSpriteNode!
@@ -75,25 +64,24 @@ class BoardScene: SKScene {
     
     
     func drawPath(path: [Node]) {
-        drawNodes(nodes: path, image: "path")
+        drawTempNodes(nodes: path, image: "path")
     }
     
     func drawOpenNodes(nodes: [Node]) {
-        drawNodes(nodes: nodes, image: "openNode")
+        drawTempNodes(nodes: nodes, image: "openNode")
     }
 
     func drawClosedNodes(nodes: [Node]) {
-        drawNodes(nodes: nodes, image: "closedNode")
+        drawTempNodes(nodes: nodes, image: "closedNode")
     }
     
     
-    func drawNodes(nodes: [Node], image: String) {
+    func drawTempNodes(nodes: [Node], image: String) {
     
-        
         var mutableNodes = nodes
         if mutableNodes.count > 0 { mutableNodes.removeLast() }
         for node in mutableNodes {
-            
+            if node.type == .start { continue }
             let tile = drawNode(tile: SKSpriteNode(name: image), node: node)
             
             tempNodes.append(tile)

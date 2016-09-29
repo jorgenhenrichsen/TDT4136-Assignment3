@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         scene = BoardScene(size: CGSize(width: view.bounds.width, height: view.bounds.height))
         viewSK.presentScene(scene)
         
-        let map = FileReader.readMap(file: "board-2-4")
+        let map = FileReader.readMap(file: "board-2-2")
         let board = BoardFactory.createBoard(from: map)
         scene.drawBoard(board: board!)
         

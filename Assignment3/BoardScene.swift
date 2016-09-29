@@ -21,11 +21,10 @@ class BoardScene: SKScene {
     
     var board: Board?
     
+    
     override init(size: CGSize) {
         super.init(size: size)
 
-        
-        
         backgroundColor = .white
     }
     
@@ -34,13 +33,14 @@ class BoardScene: SKScene {
         self.board = board
         
         let nodes = board.nodes
-        let boardWidth = board.width
-        let boardHeight = board.height
         
-        print("Width: \(boardWidth) Height: \(boardHeight)")
         
-        let nodeSize = Int(size.width) / boardWidth // How wide can we draw each node
-                
+        
+        //print("Width: \(boardWidth) Height: \(boardHeight)")
+        
+        let nodeSize = size.width / CGFloat(board.width) // How wide can we draw each node
+        
+       
         for node in nodes {
             
             var tile :SKSpriteNode!
@@ -67,8 +67,8 @@ class BoardScene: SKScene {
             }
             
             tile.size = CGSize(width: nodeSize, height: nodeSize)
-            let xPos = node.col * nodeSize + nodeSize/2
-            let yPos = ((boardHeight - 1) - node.row) * nodeSize + nodeSize/2 // Flip rows, scene drawn from bottom left
+            let xPos = CGFloat(node.col) * nodeSize + nodeSize/2.0
+            let yPos = CGFloat((board.height - 1) - node.row) * nodeSize + nodeSize/2 // Flip rows, scene drawn from bottom left
             tile.position = CGPoint(x: xPos, y: yPos)
             
             addChild(tile)
@@ -90,15 +90,18 @@ class BoardScene: SKScene {
     
     
     func drawNodes(nodes: [Node], image: String) {
+        
+        let nodeSize = size.width / CGFloat(board!.width) // How wide can we draw each node
+
+        
         if let board = board {
             var mutableNodes = nodes
             mutableNodes.removeLast()
-            let nodeSize = Int(size.width) / board.width // How wide can we draw each node
             for node in mutableNodes {
                 let tile = SKSpriteNode(name: image)
                 tile.size = CGSize(width: nodeSize, height: nodeSize)
-                let xPos = node.col * nodeSize + nodeSize/2
-                let yPos = ((board.height - 1) - node.row) * nodeSize + nodeSize/2 // Flip rows, scene drawn from bottom left
+                let xPos = CGFloat(node.col) * nodeSize + nodeSize/2
+                let yPos = CGFloat((board.height - 1) - node.row) * nodeSize + nodeSize/2 // Flip rows, scene drawn from bottom left
                 
                 tile.position = CGPoint(x: xPos, y: yPos)
                 addChild(tile)
@@ -106,12 +109,7 @@ class BoardScene: SKScene {
         }
     }
     
-    
-    
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-
 }

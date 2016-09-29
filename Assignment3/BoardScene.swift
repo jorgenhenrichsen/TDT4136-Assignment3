@@ -21,6 +21,8 @@ class BoardScene: SKScene {
     
     var board: Board?
     
+    var tempNodes = [SKSpriteNode]()
+    
     override init(size: CGSize) {
         super.init(size: size)
 
@@ -90,6 +92,7 @@ class BoardScene: SKScene {
     
     
     func drawNodes(nodes: [Node], image: String) {
+        
         if let board = board {
             var mutableNodes = nodes
             
@@ -102,11 +105,17 @@ class BoardScene: SKScene {
                 let yPos = ((board.height - 1) - node.row) * nodeSize + nodeSize/2 // Flip rows, scene drawn from bottom left
                 
                 tile.position = CGPoint(x: xPos, y: yPos)
+                tempNodes.append(tile)
                 addChild(tile)
             }
         }
     }
     
+    
+    func clearNodes() {
+        removeChildren(in: tempNodes)
+        tempNodes = []
+    }
     
     
     

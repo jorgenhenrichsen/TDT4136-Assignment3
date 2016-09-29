@@ -31,21 +31,24 @@ class ViewController: UIViewController {
         let pathFinder = PathFinder()
         
         pathFinder.findShortestPath(dataSource: board!, mode: .aStar) { (path, closed, open, current) in
+            
+            self.scene.clearNodes()
+            
             self.scene.drawPath(path: path)
             
             let shortestPathSet = Set<Node>(path)
             let closedSet = Set<Node>(closed)
             self.scene.drawClosedNodes(nodes: Array(closedSet.subtracting(shortestPathSet)))
-            self.scene.drawOpenNodes(nodes: open)
 
+            
+            self.scene.drawOpenNodes(nodes: open)
         }
-        
+
         
         //let paths = pathFinder.findShortestPath(dataSource: board!, mode: .aStar)
         
         
-      
-        
+
         
         
     }

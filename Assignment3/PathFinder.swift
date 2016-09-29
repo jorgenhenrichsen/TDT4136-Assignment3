@@ -228,18 +228,15 @@ class PathFinder {
                     
                     report(currentStep: currentStep, closed: closedSteps, open: openSteps)
                 }
-            }
-            
-            
-            func main() {
-                while !openSteps.isEmpty {
-                    self.workQueue.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                if !openSteps.isEmpty {
+                    self.workQueue.asyncAfter(deadline: DispatchTime.now() + 0.08, execute: {
                         iterate()
                     })
                 }
             }
             
-            main()
+            
+            iterate()
             
             return
         }

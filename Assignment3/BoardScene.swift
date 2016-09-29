@@ -104,6 +104,7 @@ class BoardScene: SKScene {
                 let yPos = CGFloat((board.height - 1) - node.row) * nodeSize + nodeSize/2 // Flip rows, scene drawn from bottom left
                 
                 tile.position = CGPoint(x: xPos, y: yPos)
+                tempNodes.append(tile)
                 addChild(tile)
             }
         }

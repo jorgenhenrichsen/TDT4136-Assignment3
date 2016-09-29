@@ -21,6 +21,7 @@ class BoardScene: SKScene {
     
     var board: Board?
     
+    var tempNodes = [SKSpriteNode]()
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -38,7 +39,7 @@ class BoardScene: SKScene {
         
         //print("Width: \(boardWidth) Height: \(boardHeight)")
         
-        let nodeSize = size.width / CGFloat(board.width) // How wide can we draw each node
+        //let nodeSize = size.width / CGFloat(board.width) // How wide can we draw each node
         
        
         for node in nodes {
@@ -66,10 +67,7 @@ class BoardScene: SKScene {
                 tile = SKSpriteNode(name: "water")
             }
             
-            tile.size = CGSize(width: nodeSize, height: nodeSize)
-            let xPos = CGFloat(node.col) * nodeSize + nodeSize/2.0
-            let yPos = CGFloat((board.height - 1) - node.row) * nodeSize + nodeSize/2 // Flip rows, scene drawn from bottom left
-            tile.position = CGPoint(x: xPos, y: yPos)
+            tile = drawNode(tile: tile, node: node)
             
             addChild(tile)
         }
@@ -90,25 +88,40 @@ class BoardScene: SKScene {
     
     
     func drawNodes(nodes: [Node], image: String) {
+    
         
-        let nodeSize = size.width / CGFloat(board!.width) // How wide can we draw each node
-
-        
-        if let board = board {
-            var mutableNodes = nodes
-            mutableNodes.removeLast()
-            for node in mutableNodes {
-                let tile = SKSpriteNode(name: image)
-                tile.size = CGSize(width: nodeSize, height: nodeSize)
-                let xPos = CGFloat(node.col) * nodeSize + nodeSize/2
-                let yPos = CGFloat((board.height - 1) - node.row) * nodeSize + nodeSize/2 // Flip rows, scene drawn from bottom left
-                
-                tile.position = CGPoint(x: xPos, y: yPos)
-                tempNodes.append(tile)
-                addChild(tile)
-            }
+        var mutableNodes = nodes
+        if mutableNodes.count > 0 { mutableNodes.removeLast() }
+        for node in mutableNodes {
+            
+            let tile = drawNode(tile: SKSpriteNode(name: image), node: node)
+            
+            tempNodes.append(tile)
+            addChild(tile)
         }
     }
+    
+    
+    func drawNode(tile: SKSpriteNode, node: Node) -> SKSpriteNode {
+        
+        let nodeSize = size.width / CGFloat(board!.width) // How wide can we draw each node
+        
+        tile.size = CGSize(width: nodeSize, height: nodeSize)
+        let xPos = CGFloat(node.col) * nodeSize + nodeSize/2.0
+        let yPos = CGFloat((board!.height - 1) - node.row) * nodeSize + nodeSize/2 // Flip rows, scene drawn from bottom left
+        tile.position = CGPoint(x: xPos, y: yPos)
+        
+        return tile
+    }
+    
+    
+    
+    func clearNodes() {
+        removeChildren(in: tempNodes)
+        tempNodes = []
+    }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

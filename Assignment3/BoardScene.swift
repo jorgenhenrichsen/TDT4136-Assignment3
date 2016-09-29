@@ -92,7 +92,8 @@ class BoardScene: SKScene {
     func drawNodes(nodes: [Node], image: String) {
         if let board = board {
             var mutableNodes = nodes
-            mutableNodes.removeLast()
+            
+            if mutableNodes.count > 0 { mutableNodes.removeLast() }
             let nodeSize = Int(size.width) / board.width // How wide can we draw each node
             for node in mutableNodes {
                 let tile = SKSpriteNode(name: image)

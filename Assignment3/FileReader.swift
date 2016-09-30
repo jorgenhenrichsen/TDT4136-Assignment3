@@ -11,14 +11,11 @@ import Foundation
 
 class FileReader: NSObject {
     
-    class func readMap(file: String) -> [[Character]] {
+    class func readCharacterMap(file: String) -> [[Character]] {
         var map  = [[Character]]()
-        do {
-            
-            let path = Bundle.main.path(forResource: file, ofType: "txt")
-            let text = try String(contentsOfFile: path!)
-            
-            let scentences = text.components(separatedBy: "\n")
+        
+        if let mapString = FileReader.readFile(file: file) {
+            let scentences = mapString.components(separatedBy: "\n")
             
             for sentence in scentences {
                 var line = [Character]()
@@ -30,12 +27,36 @@ class FileReader: NSObject {
                     map.append(line)
                 }
             }
-            
-        } catch {
-            print("Could not read file \"\(file)\"")
+        }
+        return map
+    }
+    
+    class func readIntMap(file: String) -> [[Int]] {
+        var map = [[Int]]()
+        
+        if let mapString = FileReader.readFile(file: file) {
+            let lines = mapString.components(separatedBy: "\n")
+            for line in lines {
+                let line = line.components(separatedBy: ",")
+                if line.count > 1 {
+                    map.append(line.map({string in Int(string)!}))
+                }
+            }
         }
         
         return map
+    }
+    
+    class func readFile(file: String) -> String? {
+        do {
+            let path = Bundle.main.path(forResource: file, ofType: "txt")
+            let text = try String(contentsOfFile: path!)
+            return text
+        }
+        catch {
+            print("No file found")
+            return nil
+        }
     }
 }
 

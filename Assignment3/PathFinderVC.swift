@@ -31,7 +31,7 @@ class PathFinderVC: UIViewController, UIScrollViewDelegate {
         
         for (index, boardName) in boards.enumerated() {
             
-            let map = FileReader.readMap(file: boardName)
+            let map = FileReader.readCharacterMap(file: boardName)
             let loadedBoard = BoardFactory.createBoard(from: map)
             
             let tileSize = view.bounds.width / CGFloat(loadedBoard!.width)

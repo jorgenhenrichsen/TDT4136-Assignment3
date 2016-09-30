@@ -16,15 +16,20 @@ protocol AStarDataSource {
     var goalNode: Node {get}
 }
 
+enum SearchMode {
+    case
+    aStar,
+    bfs,
+    djiikstra
+}
+
 class PathFinder {
     
-    
-    
-    
+    let workQueue = DispatchQueue(label: "com.pathfinder.work")
     
     
     // Find the shortest path in a board.
-    func findShortestPathAStar(dataSource: AStarDataSource) -> [Node]? {
+    func findShortestPath(dataSource: AStarDataSource, mode: SearchMode) -> (path: [Node]?, closed: [Node], open: [Node]) {
         var closedSteps = Set<Step>()
         var openSteps = [Step(node: dataSource.startNode)]
         
@@ -38,7 +43,10 @@ class PathFinder {
             // If the currentStep is the goal, convert the steps to a path.
             if currentStep.node == dataSource.goalNode {
                 print("FOUND A PATH")
-                return convertToPath(lastStep: currentStep)
+                let path = convertToPath(lastStep: currentStep)
+                let closed = convertToNodes(stepSet: closedSteps)
+                let open = convertToNodes(steps: openSteps)
+                return (path, closed, open)
             }
             
             // Get the adjacent tiles coords of the current step
@@ -67,12 +75,23 @@ class PathFinder {
                         // Because the G score has changed, the F score may have changed too
                         // So to keep the open list ordered we have to remove the step, and re-insert it with
                         // the insert function which is preserving the list ordered by F score
+                        
+                        
+                        
                         openSteps.remove(at: index)
                         openSteps.append(step)
-                        openSteps.sort(by: { step1, step2 in
-                            step1.score <= step2.score
-                        })
                         
+                        if mode == .aStar {
+                            openSteps.sort(by: { step1, step2 in
+                                step1.score <= step2.score
+                            })
+                        }
+                        else if mode == .djiikstra {
+                            openSteps.sort(by: { step1, step2 in
+                                step1.gScore <= step2.gScore
+                            })
+                        }
+
                     }
                     
                     
@@ -82,73 +101,146 @@ class PathFinder {
                     step.setParent(predecessor: currentStep, withMoveCost: moveCost)
                     
                     openSteps.append(step)
-                    openSteps.sort(by: { step1, step2 in
-                        step1.score <= step2.score
-                    })
+                    
+                    if mode == .aStar {
+                        openSteps.sort(by: { step1, step2 in
+                            step1.score <= step2.score
+                        })
+                    }
+                    else if mode == .djiikstra {
+                        openSteps.sort(by: { step1, step2 in
+                            step1.gScore <= step2.gScore
+                        })
+                    }
+
+                }
+            }
+        }
+        
+        return (path: nil, closed: convertToNodes(stepSet: closedSteps), open: convertToNodes(steps: openSteps))
+
+    }
+    
+    func findShortestPath(dataSource: AStarDataSource, mode: SearchMode, stepHandler: @escaping (_ path: [Node], _ closed: [Node], _ open: [Node], _ current: Node) -> Void) {
+        workQueue.async {
+            
+            
+            var closedSteps = Set<Step>()
+            var openSteps = [Step(node: dataSource.startNode)]
+            
+            func report(currentStep: Step, closed: Set<Step>, open: [Step]) {
+                let path = self.convertToPath(lastStep: currentStep)
+                let closedNodes = self.convertToNodes(stepSet: closed)
+                let openNodes = self.convertToNodes(steps: open)
+                DispatchQueue.main.async {
+                    stepHandler(path, closedNodes, openNodes, currentStep.node)
+                }
+            }
+            
+            func iterate() {
+                print("WALKING")
+                // remove the lowest F cost step from the open list and add it to the closed list
+                // Because the list is ordered, the first step is always the one with the lowest F cost
+                let currentStep = openSteps.remove(at: 0)
+                closedSteps.insert(currentStep)
+                
+                
+                report(currentStep: currentStep, closed: closedSteps, open: openSteps)
+                
+                
+                // If the currentStep is the goal, convert the steps to a path.
+                if currentStep.node == dataSource.goalNode {
+                    print("FOUND A PATH")
+                    /*let path = convertToPath(lastStep: currentStep)
+                     let closed = convertToNodes(stepSet: closedSteps)
+                     let open = convertToNodes(steps: openSteps)*/
+                    return
+                    //return (path, closed, open)
                 }
                 
                 
                 
-                
-                // Check if the step is already in the open list
-                /*
-                if let index = openSteps.index(of: step) {
-                    // already in the open list
+                // Get the adjacent tiles coords of the current step
+                let adjacentNodes = dataSource.walkableAdjacentNodes(of: currentStep.node)
+                for node in adjacentNodes {
+                    print("Walking through adjacent nodes")
+                    let step = Step(node: node)
                     
-                    // retrieve the old one (which has its scores already computed)
-                    let step = openSteps[index]
+                    // check if the step isn't already in the closed list
+                    if closedSteps.contains(step) {
+                        print("Ignoring adjacent node")
+                        continue // ignore it
+                    }
                     
-                    print("Current step: \(currentStep.gScore)")
-                    print("Step: \(step.gScore)")
-                    print("MoveCost: \(moveCost)")
+                    // Compute the cost from the current step to that step
+                    print(step.node)
+                    let moveCost = dataSource.costToMove(from: currentStep.node, to: step.node)
                     
-                    // check to see if the G score for that step is lower if we use the current step to get there
-                    if currentStep.gScore + moveCost < step.gScore {
-                        // replace the step's existing parent with the current step
+                    if let index = openSteps.index(of: step) {
+                        let step = openSteps[index]
+                        
+                        
+                        if currentStep.gScore + moveCost < step.gScore {
+                            // replace the step's existing parent with the current step
+                            step.setParent(predecessor: currentStep, withMoveCost: moveCost)
+                            // Because the G score has changed, the F score may have changed too
+                            // So to keep the open list ordered we have to remove the step, and re-insert it with
+                            // the insert function which is preserving the list ordered by F score
+                            
+                            
+                            
+                            openSteps.remove(at: index)
+                            openSteps.append(step)
+                            
+                            if mode == .aStar {
+                                openSteps.sort(by: { step1, step2 in
+                                    step1.score <= step2.score
+                                })
+                            }
+                            else if mode == .djiikstra {
+                                openSteps.sort(by: { step1, step2 in
+                                    step1.gScore <= step2.gScore
+                                })
+                            }
+                            
+                        }
+                        
+                        
+                    }
+                    else {
+                        step.hScore = self.hScoreForNode(current: step.node, goal: dataSource.goalNode)
                         step.setParent(predecessor: currentStep, withMoveCost: moveCost)
-                        // Because the G score has changed, the F score may have changed too
-                        // So to keep the open list ordered we have to remove the step, and re-insert it with
-                        // the insert function which is preserving the list ordered by F score
-                        openSteps.remove(at: index)
+                        
                         openSteps.append(step)
-                        openSteps.sort(by: {
-                            $0.score <= $1.score
-                        })
+                        
+                        if mode == .aStar {
+                            openSteps.sort(by: { step1, step2 in
+                                step1.score <= step2.score
+                            })
+                        }
+                        else if mode == .djiikstra {
+                            openSteps.sort(by: { step1, step2 in
+                                step1.gScore <= step2.gScore
+                            })
+                        }
                         
                     }
                     
-                } else { // not in the open list, so add it
-                    // Set the current step as the parent
-                    step.setParent(predecessor: currentStep, withMoveCost: moveCost)
-                    
-                    // Compute the H score which is the estimated movement cost to move from that step to the desired tile coordinate
-                    step.hScore = hScoreForNode(current: step.node, goal: dataSource.goalNode)
-                    
-                    // Add it with the function which preserves the list ordered by F score
-                    openSteps.append(step)
-                    openSteps.sort(by: {
-                        $0.score <= $1.score
+                    report(currentStep: currentStep, closed: closedSteps, open: openSteps)
+                }
+                if !openSteps.isEmpty {
+                    self.workQueue.asyncAfter(deadline: DispatchTime.now() + 0.08, execute: {
+                        iterate()
                     })
-                }*/
+                }
             }
             
+            
+            iterate()
+            
+            return
         }
-        
-        return nil
-
     }
-    
-    
-    /*
-     The cat will find the shortest path by repeating the following steps:
-     Get the square on the open list which has the lowest score. Let’s call this square S.
-     Remove S from the open list and add S to the closed list.
-     For each square T in S’s walkable adjacent tiles:
-     If T is in the closed list: Ignore it.
-     If T is not in the open list: Add it and compute its score.
-     If T is already in the open list: Check if the F score is lower when we use the current generated path to get there. If it is, update its score and update its parent as well.
-    */
-    
     
     
     // MARK: - Utility
@@ -167,6 +259,14 @@ class PathFinder {
             currentStep = predecessor
         }
         return shortestPath
+    }
+    
+    func convertToNodes(steps: [Step]) ->  [Node] {
+        return steps.map({$0.node})
+    }
+    
+    func convertToNodes(stepSet: Set<Step>) -> [Node] {
+        return stepSet.map({$0.node})
     }
     
     
@@ -207,10 +307,4 @@ class Step: Hashable, Comparable {
     }
     
 
-    /*public static func <=(lhs: Step, rhs: Step) -> Bool
-
-    public static func >=(lhs: Step, rhs: Step) -> Bool
-    
-
-    public static func >(lhs: Step, rhs: Step) -> Bool*/
 }

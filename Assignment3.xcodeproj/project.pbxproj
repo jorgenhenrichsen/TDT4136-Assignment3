@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0704D39C1D9E80FC007078D5 /* rh-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0704D39B1D9E80FC007078D5 /* rh-1.txt */; };
 		07057E661D994CE20028628D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07057E651D994CE20028628D /* AppDelegate.swift */; };
 		07057E681D994CE20028628D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07057E671D994CE20028628D /* ViewController.swift */; };
 		07057E6B1D994CE20028628D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07057E691D994CE20028628D /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0704D39B1D9E80FC007078D5 /* rh-1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "rh-1.txt"; sourceTree = "<group>"; };
 		07057E621D994CE20028628D /* Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07057E651D994CE20028628D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07057E671D994CE20028628D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0704D39A1D9E80FC007078D5 /* RushHourBoards */ = {
+			isa = PBXGroup;
+			children = (
+				0704D39B1D9E80FC007078D5 /* rh-1.txt */,
+			);
+			path = RushHourBoards;
+			sourceTree = "<group>";
+		};
 		07057E591D994CE20028628D = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +160,7 @@
 				07057E6C1D994CE20028628D /* Assets.xcassets */,
 				07057E6E1D994CE20028628D /* LaunchScreen.storyboard */,
 				07057E711D994CE20028628D /* Info.plist */,
+				0704D39A1D9E80FC007078D5 /* RushHourBoards */,
 				07057E951D995D790028628D /* Boards */,
 				07057EAA1D9992800028628D /* Board.swift */,
 				07057EAC1D99BCF60028628D /* PathFinder.swift */,
@@ -325,6 +336,7 @@
 				07057EA31D995D790028628D /* board-2-2.txt in Resources */,
 				42E605B11D9AB540005CE0FB /* closedNode.png in Resources */,
 				42E605931D9A8770005CE0FB /* forest.png in Resources */,
+				0704D39C1D9E80FC007078D5 /* rh-1.txt in Resources */,
 				42E605B21D9AB540005CE0FB /* openNode.png in Resources */,
 				42E605951D9A8770005CE0FB /* road.png in Resources */,
 				07057E6D1D994CE20028628D /* Assets.xcassets in Resources */,

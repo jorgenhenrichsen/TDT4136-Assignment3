@@ -29,6 +29,8 @@ class EntryVC: UIViewController {
     }
     
     func showPathFinderVC() {
+        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
         let pathFinderVC = PathFinderVC()
         present(pathFinderVC, animated: true, completion: nil)
     }

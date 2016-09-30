@@ -20,9 +20,6 @@ class PathFinderVC: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let value = UIInterfaceOrientation.landscapeLeft.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-        
         scrollView = UIScrollView(frame: view.frame)
         scrollView.delegate = self
         scrollView.backgroundColor = .white

@@ -11,6 +11,8 @@
 		0704D3A01D9E8482007078D5 /* rh-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0704D39D1D9E8482007078D5 /* rh-2.txt */; };
 		0704D3A11D9E8482007078D5 /* rh-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0704D39E1D9E8482007078D5 /* rh-3.txt */; };
 		0704D3A21D9E8482007078D5 /* rh-4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0704D39F1D9E8482007078D5 /* rh-4.txt */; };
+		0704D3A41D9E9110007078D5 /* RushHourBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0704D3A31D9E9110007078D5 /* RushHourBoard.swift */; };
+		0704D3A61D9E978A007078D5 /* NodeBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0704D3A51D9E978A007078D5 /* NodeBoard.swift */; };
 		07057E661D994CE20028628D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07057E651D994CE20028628D /* AppDelegate.swift */; };
 		07057E681D994CE20028628D /* PathFinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07057E671D994CE20028628D /* PathFinderVC.swift */; };
 		07057E6B1D994CE20028628D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07057E691D994CE20028628D /* Main.storyboard */; };
@@ -67,6 +69,8 @@
 		0704D39D1D9E8482007078D5 /* rh-2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "rh-2.txt"; sourceTree = "<group>"; };
 		0704D39E1D9E8482007078D5 /* rh-3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "rh-3.txt"; sourceTree = "<group>"; };
 		0704D39F1D9E8482007078D5 /* rh-4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "rh-4.txt"; sourceTree = "<group>"; };
+		0704D3A31D9E9110007078D5 /* RushHourBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RushHourBoard.swift; sourceTree = "<group>"; };
+		0704D3A51D9E978A007078D5 /* NodeBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeBoard.swift; sourceTree = "<group>"; };
 		07057E621D994CE20028628D /* Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07057E651D994CE20028628D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07057E671D994CE20028628D /* PathFinderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFinderVC.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				07057E951D995D790028628D /* Boards */,
 				07057EAA1D9992800028628D /* Board.swift */,
 				07057EAC1D99BCF60028628D /* PathFinder.swift */,
+				0704D3A31D9E9110007078D5 /* RushHourBoard.swift */,
+				0704D3A51D9E978A007078D5 /* NodeBoard.swift */,
 			);
 			path = Assignment3;
 			sourceTree = "<group>";
@@ -402,7 +408,9 @@
 				42D78F831D9E686700E5E529 /* RushHourVC.swift in Sources */,
 				42D78F851D9E6D7000E5E529 /* RushHourScene.swift in Sources */,
 				42E6058D1D99795A005CE0FB /* FileReader.swift in Sources */,
+				0704D3A61D9E978A007078D5 /* NodeBoard.swift in Sources */,
 				42D78F811D9E685000E5E529 /* EntryVC.swift in Sources */,
+				0704D3A41D9E9110007078D5 /* RushHourBoard.swift in Sources */,
 				07057E661D994CE20028628D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

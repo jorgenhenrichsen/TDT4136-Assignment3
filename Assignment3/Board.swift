@@ -8,53 +8,21 @@
 
 import Foundation
 
-class Board: AStarDataSource {
+
+
+
+class Board: NodeBoard, AStarDataSource {
     
-    var nodes: [Node]
     var startNode: Node
     var goalNode: Node
-    var height: Int
-    var width: Int
+
     
     init(nodes: [Node], startNode: Node, goalNode: Node) {
-        self.nodes = nodes
         self.startNode = startNode
         self.goalNode = goalNode
-        self.height = nodes.last!.row + 1
-        self.width = nodes.last!.col + 1
+        super.init(nodes: nodes)
     }
     
-
-    func nodeNorth(of node: Node) -> Node? {
-        let row = node.row - 1
-        
-        return nodeAt(col: node.col, row: row)
-    }
-    
-    func nodeSouth(of node: Node) -> Node? {
-        let row = node.row + 1
-        return nodeAt(col: node.col, row: row)
-    }
-    
-    func nodeWest(of node: Node) -> Node? {
-        let col = node.col - 1
-        return nodeAt(col: col, row: node.row)
-    }
-    
-    func nodeEast(of node: Node) -> Node? {
-        let col = node.col + 1
-        return nodeAt(col: col, row: node.row)
-    }
-    
-    // Return all adjacent nodes of given node.
-    func adjacentNodes(of node: Node) -> [Node] {
-        var aNodes = [Node]()
-        if let nNode = nodeNorth(of: node) { aNodes.append(nNode) }
-        if let sNode = nodeSouth(of: node) { aNodes.append(sNode) }
-        if let wNode = nodeWest(of: node) { aNodes.append(wNode) }
-        if let eNode = nodeEast(of: node) { aNodes.append(eNode) }
-        return aNodes
-    }
     
     // Return all adjacent nodes og given node that is walkable.
     func walkableAdjacentNodes(of node: Node) -> [Node] {
@@ -65,16 +33,7 @@ class Board: AStarDataSource {
         return walkableN
     }
     
-    func nodeAt(col: Int, row: Int) -> Node? {
-        //print("RECEIVED: col:\(col) row:\(row)")
-        if (col >= 0 && col < width) && (row >= 0 && row < height) {
-            let index = width * row + col
-            if index > nodes.count { return nil }
-          //  print("OUT: \(nodes[index])")
-            return nodes[index]
-        }
-        return nil
-    }
+
     
     func costToMove(from nodeA: Node, to nodeB: Node) -> Int {
         switch nodeB.type {
@@ -99,22 +58,7 @@ class Board: AStarDataSource {
     }
 }
 
-// A node in the board
-struct Node: Equatable, Hashable {
-    
-    let col: Int
-    let row: Int
-    let type: NodeType
-    
-    static func ==(lhs: Node, rhs: Node) -> Bool {
-        return lhs.col == rhs.col && lhs.row == rhs.row
-    }
-    
-    var hashValue: Int {
-        return col.hashValue + row.hashValue
-    }
 
-}
 
 enum NodeType: Character {
     case

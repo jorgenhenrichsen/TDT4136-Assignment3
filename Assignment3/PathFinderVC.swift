@@ -8,7 +8,7 @@
 
 import UIKit
 import SpriteKit
-class ViewController: UIViewController, UIScrollViewDelegate {
+class PathFinderVC: UIViewController, UIScrollViewDelegate {
     
     var scenes = [BoardScene]()
     var skViews = [SKView]()
@@ -19,6 +19,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
         
         scrollView = UIScrollView(frame: view.frame)
         scrollView.delegate = self

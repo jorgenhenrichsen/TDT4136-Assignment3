@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07057E661D994CE20028628D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07057E651D994CE20028628D /* AppDelegate.swift */; };
-		07057E681D994CE20028628D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07057E671D994CE20028628D /* ViewController.swift */; };
+		07057E681D994CE20028628D /* PathFinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07057E671D994CE20028628D /* PathFinderVC.swift */; };
 		07057E6B1D994CE20028628D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07057E691D994CE20028628D /* Main.storyboard */; };
 		07057E6D1D994CE20028628D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07057E6C1D994CE20028628D /* Assets.xcassets */; };
 		07057E701D994CE20028628D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07057E6E1D994CE20028628D /* LaunchScreen.storyboard */; };
@@ -25,6 +25,9 @@
 		07057EAB1D9992800028628D /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07057EAA1D9992800028628D /* Board.swift */; };
 		07057EAD1D99BCF60028628D /* PathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07057EAC1D99BCF60028628D /* PathFinder.swift */; };
 		42D78F7F1D9D8D3D00E5E529 /* mountain.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D78F7E1D9D8D3D00E5E529 /* mountain.png */; };
+		42D78F811D9E685000E5E529 /* EntryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D78F801D9E685000E5E529 /* EntryVC.swift */; };
+		42D78F831D9E686700E5E529 /* RushHourVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D78F821D9E686700E5E529 /* RushHourVC.swift */; };
+		42D78F851D9E6D7000E5E529 /* RushHourScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D78F841D9E6D7000E5E529 /* RushHourScene.swift */; };
 		42E6058B1D9960B5005CE0FB /* BoardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6058A1D9960B5005CE0FB /* BoardScene.swift */; };
 		42E6058D1D99795A005CE0FB /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6058C1D99795A005CE0FB /* FileReader.swift */; };
 		42E605931D9A8770005CE0FB /* forest.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E6058F1D9A8770005CE0FB /* forest.png */; };
@@ -58,7 +61,7 @@
 /* Begin PBXFileReference section */
 		07057E621D994CE20028628D /* Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07057E651D994CE20028628D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		07057E671D994CE20028628D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		07057E671D994CE20028628D /* PathFinderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFinderVC.swift; sourceTree = "<group>"; };
 		07057E6A1D994CE20028628D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		07057E6C1D994CE20028628D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07057E6F1D994CE20028628D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,6 +83,9 @@
 		07057EAA1D9992800028628D /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		07057EAC1D99BCF60028628D /* PathFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathFinder.swift; sourceTree = "<group>"; };
 		42D78F7E1D9D8D3D00E5E529 /* mountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mountain.png; sourceTree = "<group>"; };
+		42D78F801D9E685000E5E529 /* EntryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryVC.swift; sourceTree = "<group>"; };
+		42D78F821D9E686700E5E529 /* RushHourVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RushHourVC.swift; sourceTree = "<group>"; };
+		42D78F841D9E6D7000E5E529 /* RushHourScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RushHourScene.swift; sourceTree = "<group>"; };
 		42E6058A1D9960B5005CE0FB /* BoardScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardScene.swift; sourceTree = "<group>"; };
 		42E6058C1D99795A005CE0FB /* FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
 		42E6058F1D9A8770005CE0FB /* forest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forest.png; sourceTree = "<group>"; };
@@ -143,8 +149,11 @@
 			children = (
 				42E6058E1D9A8726005CE0FB /* TileImages */,
 				07057E651D994CE20028628D /* AppDelegate.swift */,
-				07057E671D994CE20028628D /* ViewController.swift */,
+				42D78F801D9E685000E5E529 /* EntryVC.swift */,
+				07057E671D994CE20028628D /* PathFinderVC.swift */,
+				42D78F821D9E686700E5E529 /* RushHourVC.swift */,
 				42E6058A1D9960B5005CE0FB /* BoardScene.swift */,
+				42D78F841D9E6D7000E5E529 /* RushHourScene.swift */,
 				42E6058C1D99795A005CE0FB /* FileReader.swift */,
 				07057E691D994CE20028628D /* Main.storyboard */,
 				07057E6C1D994CE20028628D /* Assets.xcassets */,
@@ -363,10 +372,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				42E6058B1D9960B5005CE0FB /* BoardScene.swift in Sources */,
-				07057E681D994CE20028628D /* ViewController.swift in Sources */,
+				07057E681D994CE20028628D /* PathFinderVC.swift in Sources */,
 				07057EAD1D99BCF60028628D /* PathFinder.swift in Sources */,
 				07057EAB1D9992800028628D /* Board.swift in Sources */,
+				42D78F831D9E686700E5E529 /* RushHourVC.swift in Sources */,
+				42D78F851D9E6D7000E5E529 /* RushHourScene.swift in Sources */,
 				42E6058D1D99795A005CE0FB /* FileReader.swift in Sources */,
+				42D78F811D9E685000E5E529 /* EntryVC.swift in Sources */,
 				07057E661D994CE20028628D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

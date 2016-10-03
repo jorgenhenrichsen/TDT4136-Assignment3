@@ -111,7 +111,19 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     
     func displayAlgorithm(type: SearchMode, scene: BoardScene) {
-
+        
+        pathFinder.findShortestPath(dataSource: scene.board!, mode: type, delay: 0.08, stepHandler: { (path, closed, open, current) in
+            scene.clearNodes()
+            scene.drawPath(path: path)
+            let shortestPathSet = Set<Node>(path)
+            let closedSet = Set<Node>(closed)
+            scene.drawClosedNodes(nodes: Array(closedSet.subtracting(shortestPathSet)))
+            
+            scene.drawOpenNodes(nodes: open)
+        }) { (path, closed, open) in
+            
+        }
+/*
         pathFinder.findShortestPath(dataSource: scene.board!, mode: type) { (path, closed, open, current) in
             scene.clearNodes()
             scene.drawPath(path: path)
@@ -120,7 +132,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             scene.drawClosedNodes(nodes: Array(closedSet.subtracting(shortestPathSet)))
 
             scene.drawOpenNodes(nodes: open)
-        }
+        }*/
     }
 
     override func didReceiveMemoryWarning() {

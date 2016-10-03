@@ -39,7 +39,7 @@ class BoardScene: SKScene {
             case .empty:
                 tile = SKSpriteNode(name: "grass")
             case .wall:
-                tile = SKSpriteNode(name: "forest")
+                tile = SKSpriteNode(name: "mountain")
             case .start:
                 tile = SKSpriteNode(name: "start")
             case .goal:

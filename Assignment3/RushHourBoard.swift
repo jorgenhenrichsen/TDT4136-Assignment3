@@ -8,74 +8,40 @@
 
 import Foundation
 
-struct RushHourBoard {
-    var nodes: [Node]
+class RushHourBoard {
+    
+    var nodes: [ONode]
     var vehicles: [Vehicle]
     
-    let width = 6
-    let height = 6
-    
-    
-    func nodeAt(col: Int, row: Int) -> Node? {
-        //print("RECEIVED: col:\(col) row:\(row)")
-        if (col >= 0 && col < width) && (row >= 0 && row < height) {
-            let index = width * row + col
-            if index > nodes.count { return nil }
-            //  print("OUT: \(nodes[index])")
-            return nodes[index]
-        }
-        return nil
-    }
-    
-    func move(vehicle: Vehicle, in direction: MoveDirection) {
+    init(nodes: [ONode]) {
+        self.nodes = nodes
+        
+        
+        
+        
+        
         
     }
     
     
-        
+}
+
+class ONode: Equatable, Hashable {
+    
+    let col: Int
+    let row: Int
+    var occupied: Bool = false
+    
+    static func ==(lhs: ONode, rhs: ONode) -> Bool {
+        return lhs.col == rhs.col && lhs.row == rhs.row
+    }
+    
+    var hashValue: Int {
+        return col.hashValue + row.hashValue
+    }
     
 }
 
-enum MoveDirection {
-    case
-    left,
-    right,
-    up,
-    down
-}
-
-struct Vehicle {
-    
+class Vehicle {
     var nodes: [Node]
-    let orientation: VehicleOrientation
-    var place: Int // Row or col for horizontal and vertical vehicles respectively.
-    var length: Int {
-        return nodes.count
-    }
-    
-    mutating func moveUp() {
-        if orientation == .horizontal {
-            
-        }
-        else {
-            
-        }
-    }
-    
-    func moveDown() {
-        if orientation == .horizontal {
-            
-        }
-        else {
-            
-        }
-    }
-    
 }
-
-enum VehicleOrientation {
-    case
-    horizontal,
-    vertical
-}
-

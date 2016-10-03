@@ -121,6 +121,18 @@ class PathFinderVC: UIViewController, UIScrollViewDelegate {
 
             scene.drawOpenNodes(nodes: open)
         }
+        
+//        let paths = pathFinder.findShortestPath(dataSource: scene.board!, mode: type)
+//        let shortestPathSet = Set<Node>(paths.path!)
+//        let closedSet = Set<Node>(paths.closed)
+//        var modedPath = paths.path!
+//        modedPath.removeLast()
+//        scene.drawPath(path: modedPath)
+        //scene.drawClosedNodes(nodes: Array(closedSet.subtracting(shortestPathSet)))
+        
+        //scene.drawOpenNodes(nodes: paths.open)
+
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -118,21 +118,18 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             let shortestPathSet = Set<Node>(path)
             let closedSet = Set<Node>(closed)
             scene.drawClosedNodes(nodes: Array(closedSet.subtracting(shortestPathSet)))
-            
             scene.drawOpenNodes(nodes: open)
         }) { (path, closed, open) in
-            
-        }
-/*
-        pathFinder.findShortestPath(dataSource: scene.board!, mode: type) { (path, closed, open, current) in
             scene.clearNodes()
-            scene.drawPath(path: path)
-            let shortestPathSet = Set<Node>(path)
-            let closedSet = Set<Node>(closed)
-            scene.drawClosedNodes(nodes: Array(closedSet.subtracting(shortestPathSet)))
-
-            scene.drawOpenNodes(nodes: open)
-        }*/
+            if let path = path {
+                scene.clearNodes()
+                scene.drawPath(path: path)
+                let shortestPathSet = Set<Node>(path)
+                let closedSet = Set<Node>(closed)
+                scene.drawClosedNodes(nodes: Array(closedSet.subtracting(shortestPathSet)))
+                scene.drawOpenNodes(nodes: open)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

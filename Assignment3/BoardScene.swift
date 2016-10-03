@@ -79,11 +79,9 @@ class BoardScene: SKScene {
     func drawTempNodes(nodes: [Node], image: String) {
     
         var mutableNodes = nodes
-        if mutableNodes.count > 0 { mutableNodes.removeLast() }
         for node in mutableNodes {
             if node.type == .start { continue }
             let tile = drawNode(tile: SKSpriteNode(name: image), node: node)
-            
             tempNodes.append(tile)
             addChild(tile)
         }

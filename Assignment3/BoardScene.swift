@@ -39,7 +39,7 @@ class BoardScene: SKScene {
             case .empty:
                 tile = SKSpriteNode(name: "grass")
             case .wall:
-                tile = SKSpriteNode(name: "forest")
+                tile = SKSpriteNode(name: "mountain")
             case .start:
                 tile = SKSpriteNode(name: "start")
             case .goal:
@@ -79,11 +79,9 @@ class BoardScene: SKScene {
     func drawTempNodes(nodes: [Node], image: String) {
     
         var mutableNodes = nodes
-        if mutableNodes.count > 0 { mutableNodes.removeLast() }
         for node in mutableNodes {
             if node.type == .start { continue }
             let tile = drawNode(tile: SKSpriteNode(name: image), node: node)
-            
             tempNodes.append(tile)
             addChild(tile)
         }
